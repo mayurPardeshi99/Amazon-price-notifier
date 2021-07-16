@@ -14,14 +14,14 @@ import os
 load_dotenv()
 
 # ENV variables
-API_KEY = os.getenv("API_KEY")
-ADMIN = os.getenv("EMAIL")
+API_KEY = os.environ.get("API_KEY")
+ADMIN = os.environ.get("EMAIL")
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -33,8 +33,8 @@ login_manager.init_app(app)
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USERNAME"] = os.getenv("EMAIL")
-app.config["MAIL_PASSWORD"] = os.getenv("PASSWORD")
+app.config["MAIL_USERNAME"] = os.environ.get("EMAIL")
+app.config["MAIL_PASSWORD"] = os.environ.get("PASSWORD")
 
 mail = Mail(app)
 
