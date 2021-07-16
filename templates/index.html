@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Can I Buy</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	</head>
+	<body class="landing is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<strong><h1 style="font-size:1.5em;font-family: 'Lobster', sans-serif;"><a href="{{ url_for('home') }}">Can I Buy</a></h1></strong>
+					<nav id="nav">
+						<ul>
+							<li><a href="{{ url_for('home') }}">Home</a></li>
+							{% if current_user.is_authenticated %}
+							<li><a href="{{ url_for('user_dashboard') }}" class="button">Dashboard</a></li>
+							<li><a href="{{ url_for('log_out') }}" class="button">Log Out</a></li>
+							{% else %}
+							<li><a href="{{ url_for('sign_up_page') }}" class="button">Sign Up</a></li>
+							<li><a href="{{ url_for('login_page') }}" class="button">Log In</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<h2>Can I Buy</h2>
+					<p>A free Amazon India price drop notifier.</p>
+					<ul class="actions special">
+						<li><a href="{{ url_for('sign_up_page') }}" class="button primary">Sign Up</a></li>
+						<li><a href="{{ url_for('login_page') }}" class="button">Log In</a></li>
+					</ul>
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2>Do you shop online ?
+							<br />
+							And want to save money while shopping ?</h2>
+							<p>Can I Buy is a free price drop alert that helps you to save money while shopping online on amazon india.<br />
+							You can add multiple products and manage them and we will notify you as soon as the price is dropped.</p>
+						</header>
+
+					</section>
+
+					<section class="box special features">
+						<div class="features-row">
+							<section>
+								<span class="icon solid major fa-users-cog accent2"></span>
+								<h3>Advanced</h3>
+								<p>You can add products to your wishlist through your dashboard and manage them. You can add as many products as you want and it's free.</p>
+							</section>
+							<section>
+								<span class="icon solid major fa-bolt accent3"></span>
+								<h3>Fast</h3>
+								<p>As soon as your wishlist's products price will drop we will notify you on your email.</p>
+							</section>
+						</div>
+						<div class="features-row">
+							<section style="margin-left:30%">
+								<span class="icon solid major fa-arrow-alt-circle-up accent4"></span>
+								<h3>Daily Price Update</h3>
+								<p>Your wishlist product's price will update everyday and you can see it on your dashboard.</p>
+							</section>
+
+						</div>
+					</section>
+				</section>
+
+			<!-- CTA -->
+			<section class="container-fluid" style="background: #212529;padding:2%;padding-top:4%;">
+				<section class="container">
+
+					<div class="row">
+						<div class="col-6 col-12-narrower">
+
+							<section class="box special">
+								<h3>Create new account</h3>
+								<p>If you want to use out service then you need to create an account.</p>
+								<ul class="actions special">
+									<li><a href="{{ url_for('sign_up_page') }}" class="button alt">Sign Up</a></li>
+								</ul>
+							</section>
+
+						</div>
+						<div class="col-6 col-12-narrower">
+
+							<section class="box special">
+								<h3>Already have an account</h3>
+								<p>If you already have an account then log in and you are good to go.</p>
+								<ul class="actions special">
+									<li><a href="{{ url_for('login_page') }}" class="button alt">Log In</a></li>
+								</ul>
+							</section>
+
+						</div>
+					</div>
+
+				</section>
+			</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; CanIBuy. All rights reserved.</li><li>Front-End template: <a href="http://html5up.net">HTML5 UP</a></li><br>
+						<li style="margin-top:15px;">Cart Photo by <a href="https://unsplash.com/@bruno_kelzer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bruno Kelzer</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="{{ url_for ('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for ('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
+			<script src="{{ url_for ('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+			<script src="{{ url_for ('static', filename='assets/js/browser.min.js') }}"></script>
+			<script src="{{ url_for ('static', filename='assets/js/breakpoints.min.js') }}"></script>
+			<script src="{{ url_for ('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for ('static', filename='assets/js/main.js') }}"></script>
+
+	</body>
+</html>

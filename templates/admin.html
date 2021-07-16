@@ -1,0 +1,80 @@
+{% include "user/header.html" %}
+ <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Admin</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Admin Dashboard</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body text-center fs-4"><strong>{{ products_details['today_price_dropped_product'] }}</strong></div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration:none;">Today's Price Dropped Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body text-center fs-4"><strong>{{ products_details['today_added_products'] }}</strong></div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration:none;">Today's Added Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body text-center fs-4"><strong>{{ products_details['all_price_dropped_products'] }}</strong></div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration:none;">All Price Dropped Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body text-center fs-4"><strong>{{ products_details['all_added_products'] }}</strong></div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration:none;">All Added Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Users
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <colgroup>
+                                        <col span="1" style="width: 50%;">
+                                        <col span="1" style="width: 50%;">
+                                     </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email address</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email address</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                                            <td>{{ user.email }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+{% include "user/footer.html" %}

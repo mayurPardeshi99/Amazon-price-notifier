@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='dashboard/css/styles.css') }}" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script>
+        function change_check_pass() {
+            if (document.getElementById('new_password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('change_password').disabled = false;
+            document.getElementById('change-match-error').innerText = "";
+            } else {
+                document.getElementById('change_password').disabled = true;
+                document.getElementById('change-match-error').innerText = "Password and confirm password should be same";
+            }
+        }
+        </script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="{{ url_for('home') }}" style="font-size:1.5em;font-family: 'Lobster', sans-serif;">Can I Buy</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <h5 style="color: white; text-align: center;margin: auto;">Hi, {{ current_user.first_name }}</h5>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('settings') }}">Settings</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="{{ url_for('log_out') }}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Products Data</div>
+                        {% if current_user.email == admin %}
+                             <a class="nav-link" href="{{ url_for('admin_dashboard') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                                Details
+                            </a>
+                            <a class="nav-link" href="{{ url_for('admin_add_product') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
+                                Add New Product
+                            </a>
+                        {% else %}
+                            <a class="nav-link" href="{{ url_for('user_dashboard') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
+                                My Wishlist
+                            </a>
+                            <a class="nav-link" href="{{ url_for('user_history') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-history"></i></div>
+                                History
+                            </a>
+                            <a class="nav-link" href="{{ url_for('add_url') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
+                                Add New Product
+                            </a>
+                            {% endif %}
+                            <div class="sb-sidenav-menu-heading">Our Products</div>
+                            <a class="nav-link" href="{{ url_for('our_products') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                                Our Products
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Go to</div>
+                            <a class="nav-link" href="{{ url_for('home') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Home
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        {{current_user.first_name}} {{ current_user.last_name }}
+                    </div>
+                </nav>
+            </div>

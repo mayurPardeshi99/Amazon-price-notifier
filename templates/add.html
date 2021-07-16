@@ -1,0 +1,57 @@
+{% include "user/header.html" %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Add new product</h1>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p class="mb-0">
+                                    <strong>Note :</strong> Please keep
+                                    <strong><code>30-40 seconds</code></strong>
+                                    time gap beetween adding new links to your wishlist.
+                                </p>
+                                 <p class="mb-0">
+                                    <strong>Note :</strong>
+                                     The server may take some time to add the products because of customers traffic in amazon. So please wait while we are processing your request.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card bg-dark shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center text-white font-weight-light my-4">Add New Product</h3></div>
+                                    <div class="card-body">
+                                        {% with messages = get_flashed_messages() %}
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <p class="text-center" style="color:red;font-weight:600;">{{ message }}</p>
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endwith %}
+                                        <form action="{{ url_for('add_url') }}" method="post" style="color: white;">
+                                            <div class="form-group mb-3">
+                                              <label style="margin-bottom: 5px;" for="url"><strong>Enter URL :</strong></label>
+                                              <input name="url" type="url" class="form-control" id="url" pattern="https://www.amazon.+" title="URL must start with https://www.amazon." placeholder="E.g. https://www.amazon.in/TP-Link-Archer-C6-Wireless-MU-MIMO/dp/B07GVR9TG7/?_encoding=UTF8&pd_rd_w=oK4wU&pf_rd_p=e60c70f0-0541-4ba5-b6fc-ada95198a5fe&pf_rd_r=4GV9BZW8JRV2C4JAFA2Z&pd_rd_r=c322c340-953c-415c-8155-d6ce7d1a8177&pd_rd_wg=PobYL&ref_=pd_gw_crs_zg_bs_976392031" required>
+                            
+                                            </div>
+                                            <div class="form-group mb-3">
+                                              <label style="margin-bottom: 5px;" for="budget"><strong>Enter Budget :</strong></label>
+                                              <input name="budget" type="text" class="form-control" id="budget" placeholder="E.g. 2,400 or 2400" pattern="([0-9]+)|([0-9]+(,[0-9]+)+)" title="Enter amount in this format - 1000 or 1,000" required>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-center mt-4 mb-0">
+                        
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </main>
+{% include "user/footer.html" %}

@@ -1,0 +1,58 @@
+{% include "user/header.html" %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">History</h1>
+                        <div class="card mb-4">
+                          
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Price Dropped Products Data
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <colgroup>
+                                        <col span="1" style="width: 15%;">
+                                        <col span="1" style="width: 50%;">
+                                        <col span="1" style="width: 15%;">
+                                        <col span="1" style="width: 15%;">
+                                        <col span="1" style="width: 5%;">
+                                     </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Price Dropped Date<br>(DD/MM/YYYY)</th>
+                                            <th>Product Name</th>
+                                            <th>Dropped Price</th>
+                                            <th>Budget</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Price Dropped Date<br>(DD/MM/YYYY)</th>
+                                            <th>Product Name</th>
+                                            <th>Dropped Price</th>
+                                            <th>Budget</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {% for product in current_user.checked_products %}
+                                        <tr>
+                                            <td>{{ product.price_dropped_date }}</td>
+                                            <td><a style="text-decoration:none;" href="{{ product.product_url }}" target="_blank">{{ product.product_name }}</a></td>
+                                            <td style="color: rgb(6, 172, 6);"><strong>{{ product.dropped_price }}</strong></td>
+                                            <td>{{ product.budget }}</td>
+                                            <td class="text-center"><a href="{{ url_for('delete_price_dropped_product', product_id=product.id) }}" style="color:inherit;"><i class="fas fa-trash"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                </main>
+{% include "user/footer.html" %}
