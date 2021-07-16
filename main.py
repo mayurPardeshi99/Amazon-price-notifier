@@ -110,7 +110,7 @@ class Our_Product(db.Model):
     product_img = db.Column(db.Text, nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 # Admin only page decorator
 def admin_only(f):
