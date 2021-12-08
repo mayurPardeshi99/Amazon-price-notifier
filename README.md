@@ -6,7 +6,7 @@ https://can-i-buy-notifier.herokuapp.com/
 
 This is a web based application which is made in flask, which tracks prices for products on Amazon. User must sign up to use it. After signing up user can create their products list just by adding Amazon product URL and their price range. User's added products price will update daily and an email will be sent to the user when the price is within the user budget.
 
-![screenshot](https://github.com/mayurPardeshi99/shop/blob/main/Readme_Images/Homescreen.PNG)
+![screenshot](https://github.com/mayurPardeshi99/Amazon-price-notifier/blob/master/Readme_Images/Homescreen.PNG)
 
 This web application  website also contains an API to collect products details of users such as url, and their budget for daily checks from outside.
 
